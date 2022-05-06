@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 class SeriesController extends Controller
 {
-    public function listarSeries()
+    public function index()
     {
         $series = [
             'Punicher',
@@ -14,14 +14,12 @@ class SeriesController extends Controller
             'Greys Anathomy'
         ];
 
-        $html = '<ul>';
+        return view('series.index')
+            ->with('series',$series);
+    }
 
-        foreach( $series as $serie){
-            $html .= "<li> $serie </li>";
-        };
-
-        $html .= '</ul>';
-
-        echo $html;
+    public function create()
+    {
+        return view('series.create');
     }
 }
