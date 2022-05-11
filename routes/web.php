@@ -2,10 +2,14 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SeriesController;
+Route::get('/', function(){
+    return redirect('/series');
+});
 
 
-Route::get('/series',[SeriesController::class, 'index'] );
+Route::resource('/series', SeriesController::class)
+    ->only('index','create','store');
 
-Route::get('/series/criar',[SeriesController::class, 'create'] );
+Route::post('series/destroy/{serie}', [SeriesController::class, 'destroy'])
+    ->name('series.destroy');
 
-Route::post('/series/salvar',[SeriesController::class, 'store'] );
