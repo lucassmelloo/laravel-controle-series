@@ -35,11 +35,19 @@ class SeriesController extends Controller
 
     }
 
-    public function destroy(Serie $serie, Request $request)
+    public function destroy(Serie $serie)
     {   
         $serie->delete();
         /* $request->session()->flash('mensagem.sucesso', "Serie {$serie->nome} removida com sucesso"); */
         return redirect('series')
             ->with('mensagem.sucesso', "Serie {$serie->nome} removida com sucesso");
     }
+
+    public function edit(Serie $series)
+    {
+        return view('series.edit')
+            ->with('serie', $series);
+    }
+
+
 }

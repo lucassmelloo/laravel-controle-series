@@ -7,10 +7,13 @@
         @foreach($series as $serie)
         <li class="list-group-item d-flex justify-content-between">
             {{$serie->nome}}
-                <form action="{{ route('series.destroy', $serie->id)}}" method="POST">
+            <span class="d-flex">
+                <a href="{{ route('series.edit', $serie->id) }}" class="btn btn-primary btn-sm">Edit</a>
+                <form action="{{ route('series.destroy', $serie->id)}}" class="ms-2" method="POST">
                     @csrf
                     <button class="btn btn-danger btn-sm">Exclude</button>
                 </form>
+            </span>
             </li>
         @endforeach
     </ul>

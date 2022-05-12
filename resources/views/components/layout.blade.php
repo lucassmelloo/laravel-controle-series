@@ -9,7 +9,7 @@
 </head>
 <body>
     <div class="container">
-        <h1>{{$title}} - Controle de series</h1>
+        <h1>{{$title}}</h1>
         {{$slot}}
     </div>
 </body>
