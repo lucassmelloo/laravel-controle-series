@@ -10,6 +10,6 @@ Route::get('/', function(){
 Route::resource('/series', SeriesController::class)
     ->except('show');
 
-Route::post('series/destroy/{serie}', [SeriesController::class, 'destroy'])
-    ->name('series.destroy');
+/* Route::post('series/destroy/{serie}', [SeriesController::class, 'destroy'])
+    ->name('series.destroy'); */
 

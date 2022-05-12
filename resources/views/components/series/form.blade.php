@@ -1,6 +1,5 @@
 <form action="{{$action}}" method="POST">
     @csrf
-
     @isset($nome)
     @method('PUT')
     @endisset
@@ -14,5 +13,5 @@
             @isset($nome) value="{{$nome}}" @endisset>
     </div>
     <button class="btn btn-primary" type="submit">Adicionar</button>
-    {{-- <a class="btn btn-primary" href="{{route('series.index')}}">Retornar</a> --}}
+    <a class="btn btn-primary" href="{{route('series.index')}}">Retornar</a> 
     </form>

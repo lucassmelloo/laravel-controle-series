@@ -49,5 +49,12 @@ class SeriesController extends Controller
             ->with('serie', $series);
     }
 
+    public function update(Serie $series, Request $request)
+    {
+        $series->nome = $request->nome;
+        $series->save();
 
+        return redirect('series')
+            ->with('mensagem.sucesso', "Série {$series->nome} atualizada com sucesso");
+    }
 }
