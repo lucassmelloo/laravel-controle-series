@@ -24,23 +24,19 @@ class SeriesController extends Controller
 
     public function store(Request $request)
     {
-        $nomeSerie = $request->input('nome');
-        $serie = new Serie();
-        $serie->nome = $nomeSerie;
-        $serie->save();
-        /* $request->session()->flash('mensagem.sucesso', "Serie {$serie->nome} criada com sucesso"); */
 
+        Serie::create($request->all());
+ 
         return redirect('series')
-            ->with('mensagem.sucesso', "Serie {$serie->nome} criada com sucesso");
+            ->with('mensagem.sucesso', "Serie {$request->nome} criada com sucesso");
 
     }
 
-    public function destroy(Serie $serie)
+    public function destroy(Serie $series)
     {   
-        $serie->delete();
-        /* $request->session()->flash('mensagem.sucesso', "Serie {$serie->nome} removida com sucesso"); */
+        $series->delete();
         return redirect('series')
-            ->with('mensagem.sucesso', "Serie {$serie->nome} removida com sucesso");
+            ->with('mensagem.sucesso', "Serie {$series->nome} removida com sucesso");
     }
 
     public function edit(Serie $series)
@@ -56,5 +52,13 @@ class SeriesController extends Controller
 
         return redirect('series')
             ->with('mensagem.sucesso', "Série {$series->nome} atualizada com sucesso");
+    }
+
+
+    public function apiSeries( $id, Request $request)
+    {
+        $series = Serie::query()->where('id',$id)->first();
+        $mensagemSucesso = session('mensagem.sucesso');
+        return response()->json($series);
     }
 }
